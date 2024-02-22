@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1 class="h1-u">
+        User: 1 - Leanne Graham
+    </h1>
+
+
+    <div class="d">
+
+    </div>
+
+
+    <div class="btns">
+        <a href="./about-us.html"><button class="btn-u">О нас</button></a>
+
+        <a href="./index.html"><button class="btn-u">На главную</button></a>
+    </div>
+
+
+
+
+
+    <script>
+        const div = document.querySelector('.d')
+        const id = location.search.split('=').at(-1)
+        let h1 = document.querySelector('h1')
+        fetch("http://localhost:8080/users/" + id)
+            .then(res => res.json())
+            .then(res => {
+                div.textContent += `
+               ${JSON.stringify(res)}
+            `
+            
+                h1.textContent = res.name
+            })
+    </script>
+</body>
+
+</html>
